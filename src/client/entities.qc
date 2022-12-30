@@ -18,9 +18,6 @@ int
 ClientGame_EntityUpdate(float id, float new)
 {
 	switch (id) {
-	case ENT_C4BOMB:
-		w_c4bomb_parse();
-		break;
 	default:
 		return (0);
 	}

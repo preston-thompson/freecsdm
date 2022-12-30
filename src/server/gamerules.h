@@ -57,25 +57,11 @@ class CSMultiplayerRules:CSGameRules
 	virtual bool(NSClientPlayer, string) ConsoleCommand;
 
 	/* CS specific */
-	virtual void(void) CreateRescueZones;
-	virtual void(void) CreateCTBuyzones;
-	virtual void(void) CreateTBuyzones;
-	virtual void(float, int) TimerBegin;
-	virtual void(void) TimerUpdate;
 
 	virtual bool(NSClientPlayer) BuyingPossible;
-	virtual void(int, int, int) RoundOver;
-	virtual void(int) RestartRound;
-	virtual void(NSClientPlayer) DeathCheck;
-	virtual void(NSClientPlayer) MakeBomber;
-	virtual void(NSClientPlayer) MakeVIP;
-	virtual void(void) CountPlayers;
-	virtual void(void) SwitchTeams;
-	virtual void(void) TimeOut;
 	virtual bool(void) IsTeamplay;
 
 	virtual void(NSClientPlayer) PlayerClearWeaponry;
-	virtual void(NSClientPlayer, int) PlayerMakePlayable;
 	virtual void(NSClientPlayer) PlayerMakeSpectator;
 	virtual void(NSClientPlayer, int) PlayerRespawn;
 	virtual entity(float) PlayerFindSpawn;

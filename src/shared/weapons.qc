@@ -43,5 +43,4 @@ weapon_t g_weapons[] = {
 	w_hegrenade,
 	w_flashbang,
 	w_smokegrenade,
-	w_c4bomb
 };
