@@ -148,43 +148,41 @@ CSMultiplayerRules::PlayerFindSpawn(float t)
 {
 	entity point = world;
 
-	if (t == TEAM_T) {
+	// Count how many info_player_start there are
+	int count = 0;
+	entity LastSpawn = find(world, ::classname, "info_player_start");
+	while (LastSpawn != world)
+	{
+		count++;
+		LastSpawn = find(LastSpawn, ::classname, "info_player_start");
+	}
+
+	if (count > 1)
+	{
+		if (t == TEAM_T) {
+			m_eLastTSpawn = find(m_eLastTSpawn, ::classname, "info_player_deathmatch");
+			
+			if (m_eLastTSpawn == world) {
+				m_eLastTSpawn = find(m_eLastTSpawn, ::classname, "info_player_deathmatch");
+			}
+			point = m_eLastTSpawn;
+		} else if (t == TEAM_CT) {
+			m_eLastCTSpawn = find(m_eLastCTSpawn, ::classname, "info_player_start");
+			
+			if (m_eLastCTSpawn == world) {
+				m_eLastCTSpawn = find(m_eLastCTSpawn, ::classname, "info_player_start");
+			}
+			point = m_eLastCTSpawn;
+		}
+	}
+	else
+	{
 		m_eLastTSpawn = find(m_eLastTSpawn, ::classname, "info_player_deathmatch");
 		
 		if (m_eLastTSpawn == world) {
 			m_eLastTSpawn = find(m_eLastTSpawn, ::classname, "info_player_deathmatch");
 		}
 		point = m_eLastTSpawn;
-	} else if (t == TEAM_CT) {
-
-		// Count how many info_player_start there are
-		int count = 0;
-		entity LastSpawn = find(world, ::classname, "info_player_start");
-		while (LastSpawn != world)
-		{
-			count++;
-			LastSpawn = find(LastSpawn, ::classname, "info_player_start");
-		}
-
-		if (count > 1)
-		{
-			m_eLastCTSpawn = find(m_eLastCTSpawn, ::classname, "info_player_start");
-			
-			if (m_eLastCTSpawn == world) {
-				m_eLastCTSpawn = find(m_eLastCTSpawn, ::classname, "info_player_start");
-			}
-		}
-		else
-		{
-			m_eLastCTSpawn = find(m_eLastCTSpawn, ::classname, "info_player_deathmatch");
-			
-			if (m_eLastCTSpawn == world) {
-				m_eLastCTSpawn = find(m_eLastCTSpawn, ::classname, "info_player_deathmatch");
-			}
-		}
-		point = m_eLastCTSpawn;
-	} else if (t == TEAM_VIP) {
-		point = find(world, ::classname, "info_vip_start");
 	}
 
 	if (point == world) {
