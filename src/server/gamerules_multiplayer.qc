@@ -76,6 +76,8 @@ CSMultiplayerRules::PlayerDeath(NSClientPlayer pl)
 		}
 	}
 
+	Money_AddMoney(pl, autocvar_fcs_reward_kill);
+
 	Weapon_DropCurrentWeapon(targ);
 
 	/* if we're the bomb carrier, make sure we drop the bomb. */
